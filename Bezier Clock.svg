@@ -3,17 +3,68 @@
 		<rect id="Tick"      x="-1"    y="-48" width="2"   height="5" fill="#000"/>
 		<rect id="smallTick" x="-0.25" y="-48" width="0.5" height="2" fill="#000"/>
 	</defs>
+	<g id="Ticks"></g>
+	
+	<!-- Javascript should replace repetitive code below by populating the "Ticks" group above -->
+	<use xlink:href="#smallTick" transform="rotate(6)"/>
+	<use xlink:href="#smallTick" transform="rotate(12)"/>
+	<use xlink:href="#smallTick" transform="rotate(18)"/>
+	<use xlink:href="#smallTick" transform="rotate(24)"/>
 	<use xlink:href="#Tick" transform="rotate(30)"/>
+	<use xlink:href="#smallTick" transform="rotate(36)"/>
+	<use xlink:href="#smallTick" transform="rotate(42)"/>
+	<use xlink:href="#smallTick" transform="rotate(48)"/>
+	<use xlink:href="#smallTick" transform="rotate(54)"/>
 	<use xlink:href="#Tick" transform="rotate(60)"/>
+	<use xlink:href="#smallTick" transform="rotate(66)"/>
+	<use xlink:href="#smallTick" transform="rotate(72)"/>
+	<use xlink:href="#smallTick" transform="rotate(78)"/>
+	<use xlink:href="#smallTick" transform="rotate(84)"/>
 	<use xlink:href="#Tick" transform="rotate(90)"/>
+	<use xlink:href="#smallTick" transform="rotate(96)"/>
+	<use xlink:href="#smallTick" transform="rotate(102)"/>
+	<use xlink:href="#smallTick" transform="rotate(108)"/>
+	<use xlink:href="#smallTick" transform="rotate(114)"/>
 	<use xlink:href="#Tick" transform="rotate(120)"/>
+	<use xlink:href="#smallTick" transform="rotate(126)"/>
+	<use xlink:href="#smallTick" transform="rotate(132)"/>
+	<use xlink:href="#smallTick" transform="rotate(138)"/>
+	<use xlink:href="#smallTick" transform="rotate(144)"/>
 	<use xlink:href="#Tick" transform="rotate(150)"/>
+	<use xlink:href="#smallTick" transform="rotate(156)"/>
+	<use xlink:href="#smallTick" transform="rotate(162)"/>
+	<use xlink:href="#smallTick" transform="rotate(168)"/>
+	<use xlink:href="#smallTick" transform="rotate(174)"/>
 	<use xlink:href="#Tick" transform="rotate(180)"/>
+	<use xlink:href="#smallTick" transform="rotate(186)"/>
+	<use xlink:href="#smallTick" transform="rotate(192)"/>
+	<use xlink:href="#smallTick" transform="rotate(198)"/>
+	<use xlink:href="#smallTick" transform="rotate(204)"/>
 	<use xlink:href="#Tick" transform="rotate(210)"/>
+	<use xlink:href="#smallTick" transform="rotate(216)"/>
+	<use xlink:href="#smallTick" transform="rotate(222)"/>
+	<use xlink:href="#smallTick" transform="rotate(228)"/>
+	<use xlink:href="#smallTick" transform="rotate(234)"/>
 	<use xlink:href="#Tick" transform="rotate(240)"/>
+	<use xlink:href="#smallTick" transform="rotate(246)"/>
+	<use xlink:href="#smallTick" transform="rotate(252)"/>
+	<use xlink:href="#smallTick" transform="rotate(258)"/>
+	<use xlink:href="#smallTick" transform="rotate(264)"/>
 	<use xlink:href="#Tick" transform="rotate(270)"/>
+	<use xlink:href="#smallTick" transform="rotate(276)"/>
+	<use xlink:href="#smallTick" transform="rotate(282)"/>
+	<use xlink:href="#smallTick" transform="rotate(288)"/>
+	<use xlink:href="#smallTick" transform="rotate(294)"/>
 	<use xlink:href="#Tick" transform="rotate(300)"/>
+	<use xlink:href="#smallTick" transform="rotate(306)"/>
+	<use xlink:href="#smallTick" transform="rotate(312)"/>
+	<use xlink:href="#smallTick" transform="rotate(318)"/>
+	<use xlink:href="#smallTick" transform="rotate(324)"/>
 	<use xlink:href="#Tick" transform="rotate(330)"/>
+	<use xlink:href="#smallTick" transform="rotate(336)"/>
+	<use xlink:href="#smallTick" transform="rotate(342)"/>
+	<use xlink:href="#smallTick" transform="rotate(348)"/>
+	<use xlink:href="#smallTick" transform="rotate(354)"/>
 	<use xlink:href="#Tick" transform="rotate(360)"/>
 
 	<!-- Moving parts of the clock -->
