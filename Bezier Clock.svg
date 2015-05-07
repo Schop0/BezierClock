@@ -1,0 +1,90 @@
+<svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<rect id="Tick"      x="-1"    y="-48" width="2"   height="5" fill="#000"/>
+		<rect id="smallTick" x="-0.25" y="-48" width="0.5" height="2" fill="#000"/>
+	</defs>
+	<use xlink:href="#Tick" transform="rotate(30)"/>
+	<use xlink:href="#Tick" transform="rotate(60)"/>
+	<use xlink:href="#Tick" transform="rotate(90)"/>
+	<use xlink:href="#Tick" transform="rotate(120)"/>
+	<use xlink:href="#Tick" transform="rotate(150)"/>
+	<use xlink:href="#Tick" transform="rotate(180)"/>
+	<use xlink:href="#Tick" transform="rotate(210)"/>
+	<use xlink:href="#Tick" transform="rotate(240)"/>
+	<use xlink:href="#Tick" transform="rotate(270)"/>
+	<use xlink:href="#Tick" transform="rotate(300)"/>
+	<use xlink:href="#Tick" transform="rotate(330)"/>
+	<use xlink:href="#Tick" transform="rotate(360)"/>
+
+	<!-- Moving parts of the clock -->
+	<path id="HoursMinutes" stroke="#888" stroke-width="2" stroke-linecap="round" fill="none"/>
+	<path id="MinutesSeconds" stroke="#080" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+	<text id="hhmmText" x="-18, -10, -2, 3, 11" y="20">Try Chrome</text>
+	
+	<!-- Animation -->
+	<script type="text/javascript"> <![CDATA[
+		/* Variables */
+		var HoursMinutesPath = document.getElementById('HoursMinutes');
+		var MinutesSecondsPath = document.getElementById('MinutesSeconds');
+		var hhmmText = document.getElementById('hhmmText');
+		var timezoneOffsetHours = new Date().getTimezoneOffset() / 60;
+		
+		/* Functions */
+		function init(){
+/*			// Not yet functional: do some copy-pasting in javascript to shrink csv code size
+			var angle
+			var Tick = document.createElement("use");
+			Tick.setAttribute("xlink:href", "#Tick");
+			var smallTick = document.createElement("use");
+			smallTick.setAttribute("xlink:href", "#smallTick");
+			
+			for( angle = 0; angle < 360; angle += 6 ){
+				if( angle%30 == 0 ){
+					Tick.setAttribute("transform", "rotate("+angle+")");
+					document.getElementById("Ticks").appendChild(Tick);
+				} else {
+					smallTick.setAttribute("transform", "rotate("+angle+")");
+					document.getElementById("Ticks").appendChild(smallTick);
+				}
+			}
+*/
+			/* Let the magic happen at slightly over 60 FPS for smooth animation */
+			setInterval( update, 16 );	/* 16ms = 62.5Hz */
+		}
+		
+		/* Documentation, anyone? Good luck! */
+		function PathData(x1, y1, x2, y2){
+			return 'M'+x1+' '+y1+'C0 0 0 0 '+x2+' '+y2;
+		}
+		
+		function update(){
+			var	hours, hourX, hourY,
+				minutes, minuteX, minuteY,
+				seconds, secondX, secondY,
+				time;
+			
+			time = Date.now();
+			/* There must be a better way for this, but for now: */
+			hours	= ( time / (1000*60*60) - timezoneOffsetHours ) % 24;
+			minutes	= ( time / (1000*60   ) ) % 60;
+			seconds	= ( time /  1000        ) % 60;
+			hourX	=  Math.sin( (2*Math.PI*hours  ) / 12 );
+			hourY	= -Math.cos( (2*Math.PI*hours  ) / 12 );
+			minuteX	=  Math.sin( (2*Math.PI*minutes) / 60 );
+			minuteY	= -Math.cos( (2*Math.PI*minutes) / 60 );
+			secondX	=  Math.sin( (2*Math.PI*seconds) / 60 );
+			secondY	= -Math.cos( (2*Math.PI*seconds) / 60 );
+			
+			HoursMinutesPath.setAttribute( 'd',
+				PathData( hourX*45, hourY*45, minuteX*45, minuteY*45 )
+			);
+			MinutesSecondsPath.setAttribute( 'd',
+				PathData( minuteX*40, minuteY*40, secondX*40, secondY*40 )
+			);
+			hhmmText.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
+		}
+		
+		/* Run the code */
+		window.onload = init();
+	]]></script>
+</svg>
