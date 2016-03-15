@@ -70,6 +70,8 @@
 	<!-- Moving parts of the clock -->
 	<path id="HoursMinutes" stroke="#888" stroke-width="2" stroke-linecap="round" fill="none"/>
 	<path id="MinutesSeconds" stroke="#080" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+	<circle id="secondsCircle" cx="0" cy="0" r="4" stroke="#080" stroke-width="1" fill="white" fill-opacity="0.75" />
+	<text id="secondsText" x="0" y="0.5" font-size="5.5px" text-anchor="middle" alignment-baseline="middle">60</text>
 	<text id="hhmmText" x="-18, -10, -2, 3, 11" y="20">Try Chrome</text>
 	
 	<!-- Animation -->
@@ -77,6 +79,8 @@
 		/* Variables */
 		var HoursMinutesPath = document.getElementById('HoursMinutes');
 		var MinutesSecondsPath = document.getElementById('MinutesSeconds');
+		var SecondsCircle = document.getElementById('secondsCircle');
+		var SecondsText = document.getElementById('secondsText');
 		var hhmmText = document.getElementById('hhmmText');
 		var timezoneOffsetHours = new Date().getTimezoneOffset() / 60;
 		
@@ -105,7 +109,7 @@
 		
 		/* Documentation, anyone? Good luck! */
 		function PathData(x1, y1, x2, y2){
-			return 'M'+x1+' '+y1+'C0 0 0 0 '+x2+' '+y2;
+			return 'M'+x1+' '+y1+'Q0 0 '+x2+' '+y2;
 		}
 		
 		function update(){
@@ -130,8 +134,13 @@
 				PathData( hourX*45, hourY*45, minuteX*45, minuteY*45 )
 			);
 			MinutesSecondsPath.setAttribute( 'd',
-				PathData( minuteX*40, minuteY*40, secondX*40, secondY*40 )
+				PathData( minuteX*41, minuteY*41, secondX*41, secondY*41 )
 			);
+			SecondsCircle.setAttribute( 'cx', secondX*45.5 );
+			SecondsCircle.setAttribute( 'cy', secondY*45.5 );
+			SecondsText.setAttribute( 'x', secondX*45.5 );
+			SecondsText.setAttribute( 'y', secondY*45.5+0.5 );
+			SecondsText.innerHTML = Math.floor(seconds);
 			hhmmText.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
 		}
 		
