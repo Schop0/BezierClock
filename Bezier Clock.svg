@@ -70,9 +70,9 @@
 	<!-- Moving parts of the clock -->
 	<path id="HoursMinutes" stroke="#888" stroke-width="2" stroke-linecap="round" fill="none"/>
 	<path id="MinutesSeconds" stroke="#080" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-	<circle id="secondsCircle" cx="0" cy="0" r="4" stroke="#080" stroke-width="1" fill="white" fill-opacity="0.75" />
-	<text id="secondsText" x="0" y="0.5" font-size="5.5px" text-anchor="middle" alignment-baseline="middle">60</text>
-	<text id="hhmmText" x="-18, -10, -2, 3, 11" y="20">Try Chrome</text>
+	<circle id="secondsCircle" r="4" stroke="#080" stroke-width="1" fill="white" fill-opacity="0.75" />
+	<text id="secondsText" font-size="5.5px" text-anchor="middle" alignment-baseline="middle">Try Chrome</text>
+	<text id="hhmmText" text-anchor="middle" y="20">Try Chrome</text>
 	
 	<!-- Animation -->
 	<script type="text/javascript"> <![CDATA[
