@@ -39,11 +39,6 @@
 		var digitalTime = document.getElementById('digitalTime');
 		var timezoneOffsetHours = new Date().getTimezoneOffset() / 60;
 		
-		function init(){
-			/* Let the magic happen at slightly over 60 FPS for smooth animation */
-			setInterval( update, 16 );	/* 16ms = 62.5Hz */
-		}
-		
 		/* Returns the data for an svg path representing a quadratic bézier curve
 		 * starting at (x1 y1) and ending at (x2 y2) with (0 0) as the control point */
 		function PathData(x1, y1, x2, y2){
@@ -80,8 +75,10 @@
 			SecondsText.setAttribute( 'y', secondY*45.5+0.5 );
 			SecondsText.innerHTML = Math.floor(seconds);
 			digitalTime.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
+
+			window.requestAnimationFrame(update);
 		}
 		
-		window.onload = init();
+		window.onload = update();
 	]]></script>
 </svg>
