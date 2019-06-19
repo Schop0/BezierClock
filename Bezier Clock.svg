@@ -1,113 +1,51 @@
 <svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
-		<rect id="Tick"      x="-1"    y="-48" width="2"   height="5" fill="#000"/>
+		<rect id="bigTick"   x="-1"    y="-48" width="2"   height="5" fill="#000"/>
 		<rect id="smallTick" x="-0.25" y="-48" width="0.5" height="2" fill="#000"/>
+		<g id="hourTicks">
+			<use xlink:href="#bigTick"/>
+			<use xlink:href="#smallTick" transform="rotate(6)"/>
+			<use xlink:href="#smallTick" transform="rotate(12)"/>
+			<use xlink:href="#smallTick" transform="rotate(18)"/>
+			<use xlink:href="#smallTick" transform="rotate(24)"/>
+		</g>
 	</defs>
-	<g id="Ticks"></g>
-	
-	<!-- Javascript should replace repetitive code below by populating the "Ticks" group above -->
-	<use xlink:href="#smallTick" transform="rotate(6)"/>
-	<use xlink:href="#smallTick" transform="rotate(12)"/>
-	<use xlink:href="#smallTick" transform="rotate(18)"/>
-	<use xlink:href="#smallTick" transform="rotate(24)"/>
-	<use xlink:href="#Tick" transform="rotate(30)"/>
-	<use xlink:href="#smallTick" transform="rotate(36)"/>
-	<use xlink:href="#smallTick" transform="rotate(42)"/>
-	<use xlink:href="#smallTick" transform="rotate(48)"/>
-	<use xlink:href="#smallTick" transform="rotate(54)"/>
-	<use xlink:href="#Tick" transform="rotate(60)"/>
-	<use xlink:href="#smallTick" transform="rotate(66)"/>
-	<use xlink:href="#smallTick" transform="rotate(72)"/>
-	<use xlink:href="#smallTick" transform="rotate(78)"/>
-	<use xlink:href="#smallTick" transform="rotate(84)"/>
-	<use xlink:href="#Tick" transform="rotate(90)"/>
-	<use xlink:href="#smallTick" transform="rotate(96)"/>
-	<use xlink:href="#smallTick" transform="rotate(102)"/>
-	<use xlink:href="#smallTick" transform="rotate(108)"/>
-	<use xlink:href="#smallTick" transform="rotate(114)"/>
-	<use xlink:href="#Tick" transform="rotate(120)"/>
-	<use xlink:href="#smallTick" transform="rotate(126)"/>
-	<use xlink:href="#smallTick" transform="rotate(132)"/>
-	<use xlink:href="#smallTick" transform="rotate(138)"/>
-	<use xlink:href="#smallTick" transform="rotate(144)"/>
-	<use xlink:href="#Tick" transform="rotate(150)"/>
-	<use xlink:href="#smallTick" transform="rotate(156)"/>
-	<use xlink:href="#smallTick" transform="rotate(162)"/>
-	<use xlink:href="#smallTick" transform="rotate(168)"/>
-	<use xlink:href="#smallTick" transform="rotate(174)"/>
-	<use xlink:href="#Tick" transform="rotate(180)"/>
-	<use xlink:href="#smallTick" transform="rotate(186)"/>
-	<use xlink:href="#smallTick" transform="rotate(192)"/>
-	<use xlink:href="#smallTick" transform="rotate(198)"/>
-	<use xlink:href="#smallTick" transform="rotate(204)"/>
-	<use xlink:href="#Tick" transform="rotate(210)"/>
-	<use xlink:href="#smallTick" transform="rotate(216)"/>
-	<use xlink:href="#smallTick" transform="rotate(222)"/>
-	<use xlink:href="#smallTick" transform="rotate(228)"/>
-	<use xlink:href="#smallTick" transform="rotate(234)"/>
-	<use xlink:href="#Tick" transform="rotate(240)"/>
-	<use xlink:href="#smallTick" transform="rotate(246)"/>
-	<use xlink:href="#smallTick" transform="rotate(252)"/>
-	<use xlink:href="#smallTick" transform="rotate(258)"/>
-	<use xlink:href="#smallTick" transform="rotate(264)"/>
-	<use xlink:href="#Tick" transform="rotate(270)"/>
-	<use xlink:href="#smallTick" transform="rotate(276)"/>
-	<use xlink:href="#smallTick" transform="rotate(282)"/>
-	<use xlink:href="#smallTick" transform="rotate(288)"/>
-	<use xlink:href="#smallTick" transform="rotate(294)"/>
-	<use xlink:href="#Tick" transform="rotate(300)"/>
-	<use xlink:href="#smallTick" transform="rotate(306)"/>
-	<use xlink:href="#smallTick" transform="rotate(312)"/>
-	<use xlink:href="#smallTick" transform="rotate(318)"/>
-	<use xlink:href="#smallTick" transform="rotate(324)"/>
-	<use xlink:href="#Tick" transform="rotate(330)"/>
-	<use xlink:href="#smallTick" transform="rotate(336)"/>
-	<use xlink:href="#smallTick" transform="rotate(342)"/>
-	<use xlink:href="#smallTick" transform="rotate(348)"/>
-	<use xlink:href="#smallTick" transform="rotate(354)"/>
-	<use xlink:href="#Tick" transform="rotate(360)"/>
-
-	<!-- Moving parts of the clock -->
-	<path id="HoursMinutes" stroke="#888" stroke-width="2" stroke-linecap="round" fill="none"/>
-	<path id="MinutesSeconds" stroke="#080" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-	<circle id="secondsCircle" r="4" stroke="#080" stroke-width="1" fill="white" fill-opacity="0.75" />
-	<text id="secondsText" font-size="5.5px" text-anchor="middle" alignment-baseline="middle">Try Chrome</text>
-	<text id="hhmmText" text-anchor="middle" y="20">Try Chrome</text>
-	
-	<!-- Animation -->
+	<g id="Dial">
+		<use xlink:href="#hourTicks"/>
+		<use xlink:href="#hourTicks" transform="rotate(30)"/>
+		<use xlink:href="#hourTicks" transform="rotate(60)"/>
+		<use xlink:href="#hourTicks" transform="rotate(90)"/>
+		<use xlink:href="#hourTicks" transform="rotate(120)"/>
+		<use xlink:href="#hourTicks" transform="rotate(150)"/>
+		<use xlink:href="#hourTicks" transform="rotate(180)"/>
+		<use xlink:href="#hourTicks" transform="rotate(210)"/>
+		<use xlink:href="#hourTicks" transform="rotate(240)"/>
+		<use xlink:href="#hourTicks" transform="rotate(270)"/>
+		<use xlink:href="#hourTicks" transform="rotate(300)"/>
+		<use xlink:href="#hourTicks" transform="rotate(330)"/>
+	</g>
+	<g id="Hands">
+		<path id="HoursMinutes" stroke="#888" stroke-width="2" stroke-linecap="round" fill="none"/>
+		<path id="MinutesSeconds" stroke="#080" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+		<circle id="secondsCircle" r="4" stroke="#080" stroke-width="1" fill="white" fill-opacity="0.75" />
+		<text id="secondsText" font-size="5.5px" text-anchor="middle" alignment-baseline="middle">Try Chrome</text>
+	</g>
+	<text id="digitalTime" text-anchor="middle" y="20">Try Chrome</text>
 	<script type="text/javascript"> <![CDATA[
-		/* Variables */
 		var HoursMinutesPath = document.getElementById('HoursMinutes');
 		var MinutesSecondsPath = document.getElementById('MinutesSeconds');
 		var SecondsCircle = document.getElementById('secondsCircle');
 		var SecondsText = document.getElementById('secondsText');
-		var hhmmText = document.getElementById('hhmmText');
+		var digitalTime = document.getElementById('digitalTime');
 		var timezoneOffsetHours = new Date().getTimezoneOffset() / 60;
 		
-		/* Functions */
 		function init(){
-/*			// Not yet functional: do some copy-pasting in javascript to shrink csv code size
-			var angle
-			var Tick = document.createElement("use");
-			Tick.setAttribute("xlink:href", "#Tick");
-			var smallTick = document.createElement("use");
-			smallTick.setAttribute("xlink:href", "#smallTick");
-			
-			for( angle = 0; angle < 360; angle += 6 ){
-				if( angle%30 == 0 ){
-					Tick.setAttribute("transform", "rotate("+angle+")");
-					document.getElementById("Ticks").appendChild(Tick);
-				} else {
-					smallTick.setAttribute("transform", "rotate("+angle+")");
-					document.getElementById("Ticks").appendChild(smallTick);
-				}
-			}
-*/
 			/* Let the magic happen at slightly over 60 FPS for smooth animation */
 			setInterval( update, 16 );	/* 16ms = 62.5Hz */
 		}
 		
-		/* Documentation, anyone? Good luck! */
+		/* Returns the data for an svg path representing a quadratic bézier curve
+		 * starting at (x1 y1) and ending at (x2 y2) with (0 0) as the control point */
 		function PathData(x1, y1, x2, y2){
 			return 'M'+x1+' '+y1+'Q0 0 '+x2+' '+y2;
 		}
@@ -141,10 +79,9 @@
 			SecondsText.setAttribute( 'x', secondX*45.5 );
 			SecondsText.setAttribute( 'y', secondY*45.5+0.5 );
 			SecondsText.innerHTML = Math.floor(seconds);
-			hhmmText.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
+			digitalTime.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
 		}
 		
-		/* Run the code */
 		window.onload = init();
 	]]></script>
 </svg>
