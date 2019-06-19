@@ -1,4 +1,9 @@
 <svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!--
+	Inspired by 9gag.com/gag/aqN6ONM
+	Full credit goes to alborz.design
+	https://web.archive.org/web/20171030071026/alborz.design/ours.html
+-->
 	<defs>
 		<rect id="bigTick"   x="-1"    y="-48" width="2"   height="5" fill="#000"/>
 		<rect id="smallTick" x="-0.25" y="-48" width="0.5" height="2" fill="#000"/>
