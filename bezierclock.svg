@@ -43,6 +43,7 @@
 		var SecondsText = document.getElementById('secondsText');
 		var digitalTime = document.getElementById('digitalTime');
 		var timezoneOffsetHours = new Date().getTimezoneOffset() / 60;
+		var date = new Date;
 		
 		/* Returns the data for an svg path representing a quadratic bézier curve
 		 * starting at (x1 y1) and ending at (x2 y2) with (0 0) as the control point */
@@ -51,35 +52,42 @@
 		}
 		
 		function update(){
-			var	hours, hourX, hourY,
-				minutes, minuteX, minuteY,
-				seconds, secondX, secondY,
-				time;
-			
-			time = Date.now();
-			/* There must be a better way for this, but for now: */
-			hours	= ( time / (1000*60*60) - timezoneOffsetHours ) % 24;
-			minutes	= ( time / (1000*60   ) ) % 60;
-			seconds	= ( time /  1000        ) % 60;
-			hourX	=  Math.sin( (2*Math.PI*hours  ) / 12 );
-			hourY	= -Math.cos( (2*Math.PI*hours  ) / 12 );
-			minuteX	=  Math.sin( (2*Math.PI*minutes) / 60 );
-			minuteY	= -Math.cos( (2*Math.PI*minutes) / 60 );
-			secondX	=  Math.sin( (2*Math.PI*seconds) / 60 );
-			secondY	= -Math.cos( (2*Math.PI*seconds) / 60 );
-			
+			date.setTime(Date.now());
+
+			// Floating point numbers for smooth movement
+			var millis  = date.getMilliseconds();
+			var seconds = date.getSeconds() + millis/1000;
+			var minutes = date.getMinutes() + seconds/60;
+			var hours   = date.getHours() + minutes/60;
+
+			// Conver to radians
+			var hours_rad   = (2*Math.PI*hours  ) / 12;
+			var minutes_rad = (2*Math.PI*minutes) / 60;
+			var seconds_rad = (2*Math.PI*seconds) / 60;
+
+			// Convert to hand coördinates, normalized to a radius of 1
+			var hourX	=  Math.sin( hours_rad );
+			var hourY	= -Math.cos( hours_rad );
+			var minuteX	=  Math.sin( minutes_rad );
+			var minuteY	= -Math.cos( minutes_rad );
+			var secondX	=  Math.sin( seconds_rad );
+			var secondY	= -Math.cos( seconds_rad );
+
+			R=45 // Radius magic number
 			HoursMinutesPath.setAttribute( 'd',
-				PathData( hourX*45, hourY*45, minuteX*45, minuteY*45 )
+				PathData( hourX*R, hourY*R, minuteX*R, minuteY*R )
 			);
+			R=41 // Radius magic number
 			MinutesSecondsPath.setAttribute( 'd',
-				PathData( minuteX*41, minuteY*41, secondX*41, secondY*41 )
+				PathData( minuteX*R, minuteY*R, secondX*R, secondY*R )
 			);
-			SecondsCircle.setAttribute( 'cx', secondX*45.5 );
-			SecondsCircle.setAttribute( 'cy', secondY*45.5 );
-			SecondsText.setAttribute( 'x', secondX*45.5 );
-			SecondsText.setAttribute( 'y', secondY*45.5+0.5 );
+			R=45.5 // Radius magic number
+			SecondsCircle.setAttribute( 'cx', secondX*R );
+			SecondsCircle.setAttribute( 'cy', secondY*R );
+			SecondsText.setAttribute( 'x', secondX*R );
+			SecondsText.setAttribute( 'y', secondY*R+0.5 );
 			SecondsText.innerHTML = Math.floor(seconds);
-			digitalTime.innerHTML = ("0"+~~hours).slice(-2)+":"+("0"+~~minutes).slice(-2);
+			digitalTime.innerHTML = date.toTimeString().substr(0,5);
 
 			window.requestAnimationFrame(update);
 		}
